@@ -1,24 +1,9 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Run:
+- `bundle`
+- `rails db:setup`
 
-Things you may want to cover:
+Demo:
+https://github.com/JamesAndresCM/foldersDoc/assets/11434942/daf8b9ca-665f-486b-bbe9-e3407791f26b
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
