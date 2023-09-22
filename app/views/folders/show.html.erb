@@ -1,0 +1,47 @@
+<%== pagy_bootstrap_nav(@pagy) if @pagy.pages > 1 %>
+<div data-controller="dragdrop" data-folder-id="<%= @folder.id %>" class="dropzone"
+  <p class="dropzone-text">Drag and drop your files here to upload</p>
+  <% if @folder.documents.exists? %>
+    <p>Total Documents: <%= @folder.documents.size %> </p>
+  <% end %>
+<table class="mt-3 table table-bordered table-striped">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @items.each do |item| %>
+      <tr>
+        <td>
+          <% if item.is_a?(Folder) %>
+            <i class="bi bi-folder"></i> <%= link_to item.name, folder_path(item) %>
+          <% else %> 
+            <i class="bi bi-file-earmark-text"></i> <%= link_to item.filename.to_s, rails_blob_path(item, disposition: "attachment") %>
+          <% end %>
+        </td>
+        <td>
+          <% if item.is_a?(Folder) %>
+            <%= button_to item, method: :delete, class: "btn btn-danger d-inline-block me-2", form: { data: { turbo_confirm: "Are you sure?" }, class: "d-inline-block" } do %>
+              <i class="bi bi-trash-fill" title="Delete"></i>
+            <% end %>
+          <% else %>
+            <%= link_to 'Delete', remove_document_folder_path(@folder, document_id: item.id), method: :delete, data: { turbo_method: "delete", turbo_confirm: 'Are you sure?' } %>
+            <%= link_to 'Download', rails_blob_path(item, disposition: "attachment") %>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+</div>
+<div class="mt-3">
+<% if @folder.parent %>
+  <%= link_to "Back to parent folder", folder_path(@folder.parent), class: "btn-secondary btn btn-sm" %>
+<% else %>
+  <%= link_to "Back to folders", folders_path, class: "btn-secondary btn btn-sm" %>
+<% end %>
+
+<%= link_to "New Subfolder", new_folder_folder_path(@folder), class: "btn-primary btn btn-sm" %>
+</div>

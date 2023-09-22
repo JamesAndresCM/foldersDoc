@@ -1,0 +1,26 @@
+<div id="new_folder" class="card-body">
+<%= form_with(model: @folder) do |form| %>
+  <% if @folder.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(folder.errors.count, "error") %> prohibited this folder from being saved:</h2>
+
+      <ul>
+        <% @folder.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= form.text_field :name, class: "form-control", placeholder: "folder name" %>
+  </div>
+  <%= form.hidden_field :parent_id %>
+
+  <div class="mt-3 d-flex justify-content-between">
+    <div>
+      <%= form.submit "Send", class: "btn btn-primary" %>
+    </div>
+  </div>
+<% end %>
+</div>

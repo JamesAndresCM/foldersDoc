@@ -1,0 +1,13 @@
+<div id="notice">
+  <% if flash[:notice] %>
+    <div class='alert alert-success fade-out' data-controller='notice'>
+      <%= flash[:notice] %>
+    </div>
+  <% end %>
+
+  <% if flash[:alert] %>
+    <div class='alert alert-danger fade-out' data-controller='notice'>
+      <%= flash[:alert] %>
+    </div>
+  <% end %>
+</div>

@@ -1,0 +1,23 @@
+@import 'bootstrap/scss/bootstrap';
+@import 'bootstrap-icons/font/bootstrap-icons';
+
+.dropzone {
+  border: 2px dashed #007BFF;
+  padding: 20px;
+  position: relative;
+}
+
+.dropzone.dragging {
+  background-color: #e9ecef;
+}
+
+.dropzone-text {
+  text-align: center;
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #007BFF;
+  font-weight: bold;
+}
